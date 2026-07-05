@@ -10,12 +10,14 @@ structured recommendation for an internal employee.
 npm install
 cp .env.example .env   # then fill in your own OPENAI_API_KEY
 npm run cli            # runs the example request + one unknown-input request
-npm run cli -- "<your own service request text>"
-npm run typecheck
+npm run cli -- "<your own service request text>" # auf das leerzeichen achten sonst klappt es nicht
+# another example request: 
+npm run cli -- "Mein Reinigungsroboter startet nicht seinen REinigungsdurchgang, kannst du mir weiterhelfen?"
 ```
 
+
 Each step of the workflow logs to the console as it runs (extraction → match → enrich → respond), so you
-can follow along instead of only seeing the final JSON.
+can follow along. instead of only seeing the final JSON.
 
 ## Architecture
 
