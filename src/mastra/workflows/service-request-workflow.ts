@@ -17,7 +17,7 @@ const extractOutputSchema = z.object({
   message: z.string(),
   machine: z.string().nullable(),
   error_code: z.string().nullable(),
-  symptom: z.string().nullable(),
+  symptoms: z.array(z.string()),
 });
 
 const matchOutputSchema = z.object({
@@ -51,7 +51,7 @@ const extractStep = createStep({
   inputSchema: z.object({ message: z.string() }),
   outputSchema: extractOutputSchema,
   execute: async ({ inputData }) => {
-    console.log('\n[1/4] extract: asking the model for machine + error code + symptom...');
+    console.log('\n[1/4] extract: asking the model for machine + error code + symptoms...');
     const result = await extractionAgent.generate(inputData.message, {
       structuredOutput: {
         schema: z.object({
@@ -63,24 +63,24 @@ const extractStep = createStep({
             .string()
             .nullable()
             .describe('Error code exactly as written in the text, e.g. "E42", or null if none is mentioned'),
-          // Short paraphrase of the described problem (independent of machine/error_code). Kept so the
-          // match step still has a clean signal to fall back on when the error code is missing/unrecognized
-          // or the machine model doesn't exist in service_cases.json.
-          symptom: z
-            .string()
-            .nullable()
-            .describe('Short paraphrase (a few words) of the described problem/symptom, or null if none is described'),
+          // Short, individual symptom phrases (independent of machine/error_code), e.g. ["fährt nicht zur
+          // Ladestation", "Navigation ungenau"]. Kept so the match step still has a clean signal to fall
+          // back on when the error code is missing/unrecognized or the machine model doesn't exist in
+          // service_cases.json.
+          symptoms: z
+            .array(z.string())
+            .describe('Short individual phrases describing the observed symptoms/problems, or [] if none are described'),
         }),
       },
     });
     console.log(
-      `       -> machine=${result.object.machine ?? 'null'}, error_code=${result.object.error_code ?? 'null'}, symptom=${result.object.symptom ?? 'null'}`,
+      `       -> machine=${result.object.machine ?? 'null'}, error_code=${result.object.error_code ?? 'null'}, symptoms=${JSON.stringify(result.object.symptoms)}`,
     );
     return {
       message: inputData.message,
       machine: result.object.machine,
       error_code: result.object.error_code,
-      symptom: result.object.symptom,
+      symptoms: result.object.symptoms,
     };
   },
 });
@@ -97,9 +97,9 @@ const matchStep = createStep({
       {
         machine: inputData.machine,
         errorCode: inputData.error_code,
-        // Prefer the extracted symptom paraphrase for the text-match fallback; it's a cleaner
+        // Prefer the extracted symptom phrases for the text-match fallback; they're a cleaner
         // signal than the raw message when machine/error_code weren't confidently detected.
-        message: inputData.symptom ?? inputData.message,
+        message: inputData.symptoms.length > 0 ? inputData.symptoms.join(' ') : inputData.message,
       },
       cases,
     );
