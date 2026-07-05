@@ -50,14 +50,14 @@ A 4-step [Mastra](https://mastra.ai/) workflow (`src/mastra/workflows/service-re
   avoids the LLM inventing causes/checks for a case that doesn't exist.
 
 ### AI Usage
-Claude Code to help with Planning, DevOps and Programming
-OpenAI API for the LLM Processing steps
+- Claude Code to help with Planning, DevOps and Programming
+- OpenAI API for the LLM Processing steps
 
 
 ## Notes on current implementation
-Symptoms aren't recognized correctly, "seit gestern" is not a Symptom. This can be fixed by a variable "timeSpan" or a Hint in the Prompt. (Fixed in a later commit)
-The recommendations are not really guided in a meaningfulway and the LLM just decides the order they should be done. If more concrete Instructions are given and saved to the service cases, that would improve the recommendations significantly. 
-z.B. "Für die Anfrage konnte kein passender Servicefall gefunden werden (Maschine: X-900, Fehlercode: E99). Bitte manuell prüfen oder an den zweiten Support-Level eskalieren."
+Symptoms aren't recognized correctly, "seit gestern" is not a Symptom. This can be fixed by a variable "timeSpan" or a Hint in the Prompt. (Fixed in a later commit) <br>
+The recommendations are not really guided in a meaningfulway and the LLM just decides the order they should be done. If more concrete Instructions are given and saved to the service cases, that would improve the recommendations significantly.  <br>
+z.B. "Für die Anfrage konnte kein passender Servicefall gefunden werden (Maschine: X-900, Fehlercode: E99). Bitte manuell prüfen oder an den zweiten Support-Level eskalieren." <br>
     - the "zweites Support Level" is something made up, the real procedure could be added to the Prompt for example.
 
 ## Next Steps for real implementation
