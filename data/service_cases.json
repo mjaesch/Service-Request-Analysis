@@ -1,0 +1,29 @@
+[
+  {
+    "id": "case-001",
+    "machine": "R-500",
+    "error_code": "E42",
+    "symptoms": ["fährt nicht zur Ladestation", "Navigation ungenau", "Docking fehlgeschlagen"],
+    "known_causes": ["verschmutzter Docking-Sensor", "defekter IR-Sensor", "veraltete Firmware"],
+    "recommended_checks": ["Docking-Sensor reinigen", "Firmware-Version prüfen", "IR-Sensor testen"],
+    "likely_parts": ["IR-Sensor Modul", "Docking-Kontaktplatte"]
+  },
+  {
+    "id": "case-002",
+    "machine": "R-500",
+    "error_code": "E17",
+    "symptoms": ["Wasser wird nicht ausgegeben", "Reinigung startet nicht"],
+    "known_causes": ["Wassertank leer", "Pumpe blockiert", "Filter verstopft"],
+    "recommended_checks": ["Tank prüfen", "Filter reinigen", "Pumpe testen"],
+    "likely_parts": ["Wasserpumpe", "Filtereinsatz"]
+  },
+  {
+    "id": "case-003",
+    "machine": "S-300",
+    "error_code": "E42",
+    "symptoms": ["Kartierung fehlerhaft", "Roboter bleibt stehen"],
+    "known_causes": ["LiDAR verschmutzt", "Mapping-Fehler", "Softwareproblem"],
+    "recommended_checks": ["LiDAR reinigen", "Mapping neu starten", "Softwareupdate durchführen"],
+    "likely_parts": ["LiDAR-Abdeckung"]
+  }
+]

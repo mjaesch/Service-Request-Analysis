@@ -1,0 +1,30 @@
+[
+  {
+    "part_number": "P-1001",
+    "name": "IR-Sensor Modul",
+    "compatible_machines": ["R-500"],
+    "stock": 12,
+    "price": 89.90
+  },
+  {
+    "part_number": "P-1002",
+    "name": "Docking-Kontaktplatte",
+    "compatible_machines": ["R-500", "S-300"],
+    "stock": 4,
+    "price": 49.90
+  },
+  {
+    "part_number": "P-2001",
+    "name": "Wasserpumpe",
+    "compatible_machines": ["R-500"],
+    "stock": 0,
+    "price": 129.90
+  },
+  {
+    "part_number": "P-3001",
+    "name": "LiDAR-Abdeckung",
+    "compatible_machines": ["S-300"],
+    "stock": 7,
+    "price": 39.90
+  }
+]
