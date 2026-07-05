@@ -1,3 +1,12 @@
 KI_Profil.md
 message.md
 todo.md
+
+node_modules
+dist
+.mastra
+.env
+.env.development
+output.txt
+*.db
+*.db-*
