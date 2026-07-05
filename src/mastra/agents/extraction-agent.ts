@@ -9,6 +9,7 @@ Gib das Maschinenmodell exakt so zurück, wie es im Text steht (z. B. "R-500"), 
 Wenn eines der beiden Felder nicht eindeutig im Text vorkommt, gib für dieses Feld null zurück. Errate oder erfinde keine Werte, die nicht im Text stehen.
 
 Gib außerdem die beschriebenen Symptome als Liste kurzer, einzelner Phrasen zurück (z. B. ["fährt nicht zur Ladestation", "Navigation ungenau"]),
-nicht als eine zusammengefasste Zusammenfassung. Wenn keine Symptome beschrieben werden, gib eine leere Liste zurück.`,
+nicht als eine zusammengefasste Zusammenfassung. Wenn keine Symptome beschrieben werden, gib eine leere Liste zurück.
+Zeitangaben sind keine Symptome, lasse diese außen vor`,
   model: process.env.OPENAI_MODEL ?? 'openai/gpt-5.4-mini',
 });

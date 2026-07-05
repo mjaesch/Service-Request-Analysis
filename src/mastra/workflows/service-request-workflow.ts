@@ -166,7 +166,8 @@ const respondStep = createStep({
       };
     }
 
-    const prompt = `Maschine: ${inputData.caseMachine}
+    const prompt = `Nachricht des Nutzers: ${inputData.message} Wenn bei der Nachricht des Nutzers die Maschine nicht angegeben ist, formuliere den Ersten Satz so: Falls es die Maschine (maschine des gefundenen Servicefalls) ist, dann...
+    Maschine: ${inputData.caseMachine}
 Fehlercode: ${inputData.error_code}
 Wahrscheinliche Ursachen: ${inputData.probableCauses.join(', ')}
 Empfohlene Prüfschritte: ${inputData.recommendedChecks.join(', ')}
